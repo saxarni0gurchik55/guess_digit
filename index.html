@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра: Угадай число</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px;
+        background-color: aqua; }
+        input { padding: 10px; }
+        button { padding: 10px 20px; }
+        .result { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+<h1>Игра: Угадай число!</h1>
+<p>Я загадал число от 1 до 10. Попробуй угадать!</p>
+<input type="number" id="guess" min="1" max="10">
+<button onclick="checkGuess()">Угадать</button>
+<div class="result" id="result"></div>
+<script>
+    const secretNumber = Math.floor(Math.random() * 10) + 1; // Загадать число от 1 до 10
+
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById('guess').value);
+        const resultDiv = document.getElementById('result');
+
+        // Сравнение введенного числа с загаданным
+        if (userGuess === secretNumber) {
+            resultDiv.textContent = "Поздравляю! Ты угадал число!";
+        } else if (userGuess < secretNumber) {
+            resultDiv.textContent = "Слишком низко! Попробуй еще раз.";
+        } else if (userGuess > secretNumber) {
+            resultDiv.textContent = "Слишком высоко! Попробуй еще раз.";
+        } else {
+            resultDiv.textContent = "Пожалуйста, введи корректное число.";
+        }
+    }
+</script>
+
+</body>
+</html>
+
